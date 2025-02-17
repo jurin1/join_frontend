@@ -340,12 +340,15 @@ function showOverlay() {
  */
 async function deleteContact(id) {
   const success = await deleteItem("contacts", id);
+  let contactDetails = document.getElementById("contactContainer");
 
   if (success) {
-    showContacts();
+
     document.getElementById("contactContainerContact").innerHTML = "";
     hideEditContactMobile();
     disableContactContainer();
+    await initContacts();
+    contactDetails.classList.remove("backgroundColorContact");
     setTimeout(() => {
       popupDeleteContact();
     }, 2000);
@@ -371,10 +374,11 @@ function deleteContactQuestion(id, name) {
  * @param {boolean} bool - True to delete the contact, false to cancel.
  * @param {number} id - The ID of the contact to delete.
  */
-function deleteContactSure(bool, id) {
+async function deleteContactSure(bool, id) {
   let element = document.getElementById("deleteContactSure").classList;
   if (bool) {
     deleteContact(id);
+
   }
   element.add("d-none");
 }
@@ -490,7 +494,7 @@ async function saveEditContact(id) {
 
   await updateItem("contacts", id, body);
   await initContacts();
-  // showContact(editedContact.id);
+  await showContact(id);
   closeEditContact();
 }
 
@@ -513,7 +517,10 @@ function disableContactContainer() {
   contactContainerView.style.removeProperty("width");
   document.getElementById("editContactMobile").classList.add("d-none");
   hideEditContactMobile();
-  setContentContactHeight(contentHeight);
+  if (contentHeight) {
+    setContentContactHeight(contentHeight);
+  }
+
 }
 
 /**
