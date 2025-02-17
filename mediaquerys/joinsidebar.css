@@ -1,0 +1,38 @@
+@media (max-width: 800px) {
+  .sideBarBox {
+    display: none;
+  }
+
+.sidebar-container{
+  justify-content: flex-start;
+}
+
+.sideBarLinks{
+  justify-content: flex-start;
+  margin-top: 50px;
+}
+
+.linksBottom{
+  margin-top: 100px;
+}
+
+
+
+  .links:hover {
+    border-radius: 10px;
+}
+
+  .joinlogo {
+    width: 80px;
+    height: 98px;
+    margin-top: 15px;
+  } 
+}
+
+@media (max-width:400px) {
+
+
+  .links:hover {
+    border-radius: 10px;
+  }
+}

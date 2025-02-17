@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts</title>
+  <link rel="icon" type="image/x-icon" href="/assets/img/join.png">
+  <link rel="stylesheet" href="/css/templates.css">
+  <link rel="stylesheet" href="/css/contacts.css">
+  <link rel="stylesheet" href="/mediaquerys/contacts-mediaquery.css">
+  <link rel="stylesheet" href="/mediaquerys/joinsidebar.css">
+  <link rel="stylesheet" href="/mediaquerys/header.css">
+  <script defer src="/scripts/storage.js"></script>
+  <script defer src="/scripts/script.js"></script>
+  <script defer src="/scripts/contactsHTML.js"></script>
+  <script defer src="/scripts/contacts.js"></script>
+  <script src="/scripts/auth-check.js"></script>
+
+
+
+</head>
+
+<body id="body" onload="initContacts()">
+  <div class="sideBarBox" w3-include-html="/assets/templates/join_side_bar.html"></div>
+  <div class="headerBox" w3-include-html="/assets/templates/header.html"></div>
+  <div class="contentContact">
+
+
+
+
+
+
+
+
+
+
+    <div id="addcontactContainer" class="addcontactContainer">
+      <div class=" addContactButtonContacts">
+        <div class="addButtonContainer">
+          <button onclick="addNewContact()" class="addContactButton" title="add a new Contact">
+            <div class="addContactButtonContainer">
+              <!-- <p class="addContactButtonText">Add New Contact</p> -->
+              <img style="height: 33px; width: 33px;" src="/assets/img/personAdd.png" alt="">
+            </div>
+          </button>
+          <button onclick="editUserAccount(true)" class="addContactButton" title="edit your account">
+            <div class="addContactButtonContainer">
+              <!-- <p class="addContactButtonText">Edit</p> -->
+              <img style="height: 33px; width: 33px;" src="/assets/img/manage_accounts.png" alt="">
+            </div>
+          </button>
+        </div>
+
+        <div id="renderContactContainer" class="renderContactContainer">
+          <div id="letterBox"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div id="contactContainer" class="contactContainer">
+      <div class="contactHeadline">
+        <div class="headlineArrow">
+          <h2>Contacts</h2>
+          <img onclick="disableContactContainer()" id="imgArrow" class="imgArrow" src="/assets/img/arrow-left-line.png"
+            alt="">
+        </div>
+        <div class="vectorPerpendicularContainerh3">
+          <div class="vectorPerpendicularContainer">
+          </div>
+          <h3>Better with a team</h3>
+        </div>
+      </div>
+      <div id="showContact" class="contactContainerAllInfo">
+      </div>
+      <div id="popUpSuccesfullyCreated" class="successfullyCreated overlay-successfullyCreated">
+        <p class="successfullyText">Contact succesfully created</p>
+      </div>
+      <div id="popUpSuccesfullyDeleted" class="successfullyDeleted overlay-successfullyDeleted">
+        <p class="successfullyText">Contact succesfully deleted</p>
+      </div>
+
+
+      <div id="editDeleteContainerMobile"
+        class="editDeleteContainerMobile d-none">
+
+
+
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div id="backGroundOpacityContainer" class="backGroundOpacityContainer d-none">
+
+
+    <div id="addnewcontact" class="addNewContactBackPopUpContainer">
+      <div class="addNewContactPopUpContainer ">
+        <div class="addContactPopUpLeftContainer">
+          <div class="xButtonResponsiveContainer">
+            <p class="xButtonResponsive d-none" onclick="closeAddNewContact()">x</p>
+          </div>
+          <div class="addContactPopUpLeft">
+            <img class="addContactJoinLogo" src="/assets/img/joinlogo.png" alt="">
+
+            <p class="addContactHeadline">Add contact</p>
+            <p class="addContactParagraph">Tasks are better with a team!</p>
+            <img class="vectorContactPopUp" src="/assets/img/vector.png" alt="">
+          </div>
+        </div>
+        <div class="addContactPopUpRightContainer">
+          <div class="profileContactContainer">
+            <img class="profileContact" src="/assets/img/profilecontact.png" alt="">
+          </div>
+          <div class="closeInputButtonsContainer">
+            <div class="xContactButton">
+              <p onclick="closeAddNewContact()" class="closeAddContact">x</p>
+            </div>
+            <div class="inputButtonsContainer">
+              <form onsubmit="checkNewContact(event)">
+                <div class="contactInput">
+                  <div class="inputIconsContainerMessage">
+                    <div class="inputIconsContainer">
+                      <div class="contactDetails">
+                        <input id="name" class="input" type="text" placeholder="Name" autocomplete="name">
+                        <img class="inputIcons" src="/assets/img/person.png" alt="">
+                      </div>
+                    </div>
+                    <div id="requiredMessageName"></div>
+                  </div>
+                  <div class="inputIconsContainerMessage">
+                    <div class="inputIconsContainer">
+                      <div class="contactDetails">
+                        <input id="email" class="input" type="email" placeholder="Email" autocomplete="email">
+                        <img class="inputIcons" src="/assets/img/mail.png" alt="">
+                      </div>
+                    </div>
+                    <div id="requiredMessageMail"></div>
+                  </div>
+                  <div class="inputIconsContainerMessage">
+                    <div class="inputIconsContainer">
+                      <div class="contactDetails">
+                        <input id="tel" class="input" type="tel" placeholder="Phone" autocomplete="tel">
+                        <img class="inputIcons" src="/assets/img/call.png" alt="">
+                      </div>
+                    </div>
+                    <div id="requiredMessageTel"></div>
+                  </div>
+                </div>
+
+
+                <div class="cancelCreateContactButtons">
+                  <button onclick="closeAddNewContact()" class="cancelBtn">
+                    <span class="cancelX">
+                      <p class="cancelText">Cancel</p>
+                      <p class="x">x</p>
+                    </span>
+
+                  </button>
+                  <button type="submit" class="createCheckBtn">
+                    <span class="createCheck">
+                      <p class="createText">Create contact</p>
+                      <img src="/assets/img/check.png" alt="">
+                    </span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+
+
+  <div id="editbackGroundOpacityContainer" class="backGroundOpacityContainer d-none">
+    <div id="editcontact" class="addNewContactBackPopUpContainer overlay-addNewContactPopUpContainer">
+      <div id="addNewContactPopUp" class="addNewContactPopUpContainer "></div>
+
+    </div>
+  </div>
+  <div onclick="editUserAccount(true)" id="editContactMobile" class="editContactMobile">
+      <img 
+        src="/assets/img/manage_accounts.png"></img>
+  </div>
+
+  <div onclick="addNewContact()" class="personLogo">
+  <img src="/assets/img/person_add.png"> </img>
+  </div>
+
+
+  <div id="deleteContactSure" class="deleteContactSure d-none">
+
+  </div>
+
+
+
+
+  <div id="editUserAccount" class="addNewContactBackPopUpContainer d-none">
+    <div class="addNewContactPopUpContainer ">
+      <div class="addContactPopUpLeftContainer">
+        <div class="xButtonResponsiveContainer">
+          <p class="xButtonResponsive d-none" onclick="editUserAccount(false)">x</p>
+        </div>
+        <div class="addContactPopUpLeft">
+          <img class="addContactJoinLogo" src="/assets/img/joinlogo.png" alt="">
+
+          <p class="addContactHeadline">Edit your Account</p>
+        </div>
+      </div>
+      <div class="addContactPopUpRightContainer">
+        <div class="profileContactContainer">
+          <img class="profileContact" src="/assets/img/profilecontact.png" alt="">
+        </div>
+        <div class="closeInputButtonsContainer">
+
+          <div class="inputButtonsContainer">
+            <form onsubmit="updateUser(event)">
+              <div class="contactInput">
+                <div class="inputIconsContainerMessage">
+                  <div class="inputIconsContainer">
+                    <div class="contactDetails">
+                      <input id="nameLoggedinUser" class="input" type="text" placeholder="Name" autocomplete="name">
+                      <img class="inputIcons" src="/assets/img/person.png" alt="">
+                    </div>
+                  </div>
+                  <div id="requiredMessageName"></div>
+                </div>
+                <div class="inputIconsContainerMessage">
+                  <div class="inputIconsContainer">
+                    <div class="contactDetails">
+                      <input id="emailLoggedinUser" class="input" type="email" placeholder="Email" autocomplete="email">
+                      <img class="inputIcons" src="/assets/img/mail.png" alt="">
+                    </div>
+                  </div>
+                  <div id="requiredMessageMail"></div>
+                </div>
+
+
+                <div class="inputIconsContainerMessage">
+                  <div class="inputIconsContainer">
+                    <div class="contactDetails">
+                      <input id="password" oninput="passwordCheck()" class="input" type="password" placeholder="Change your Password">
+                      <img class="inputIcons" src="/assets/img/lock.png" alt="">
+                    </div>
+                  </div>
+                  <div id="requiredMessageTel"></div>
+                </div>
+
+                <div class="inputIconsContainerMessage">
+                  <div class="inputIconsContainer">
+                    <div class="contactDetails">
+                      <input id="passwordConfirm" disabled oninput="confirmPassword()" class="input" type="password"
+                        placeholder="Repeat your Password">
+                      <img class="inputIcons" src="/assets/img/lock.png" alt="">
+                    </div>
+                  </div>
+                  <div id="passwordConfirmError" class="d-none">
+                    Passwords do not match
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="cancelCreateContactButtons">
+                <button onclick="editUserAccount(false)" class="cancelBtn">
+                  <span class="cancelX">
+                    <p class="cancelText">Cancel</p>
+                    <p class="x">x</p>
+                  </span>
+
+                </button>
+
+                <button id="updateBtn" type="submit" class="createCheckBtn">
+                  <span class="createCheck">
+                    <p class="createText">Update</p>
+                    <img src="/assets/img/check.png" alt="">
+                  </span>
+                </button>
+
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="popGuestUser" class="popupGuestUser d-none">
+
+          <span>Guest users are not allowed to edit the account.<br>Please log in or sign up with your account.</span>
+
+    <div class="popupButtons">
+      <a href="/assets/templates/login.html" onclick="logout()"><button> Login</button></a>
+      <a href="/assets/templates/signup.html" onclick="logout()"><button> Signup</button></a>
+    </div>
+    <span onclick="displayGuestUserPopup(false)"> cancel</span>
+
+  </div>
+
+
+</body>
+
+</html>
