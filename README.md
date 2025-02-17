@@ -1,6 +1,6 @@
 # Join Frontend (jurin1-join_frontend)
 
-This repository contains the frontend code for the Join project, a Kanban project management tool. This frontend is built using Vanilla JavaScript, HTML, and CSS, and is designed to work in conjunction with the [Join Backend](link-to-join_backend_repository-if-available) (which is a Django backend).
+This repository contains the frontend code for the Join project, a Kanban project management tool. This frontend is built using Vanilla JavaScript, HTML, and CSS, and is designed to work in conjunction with the [Join Backend](https://github.com/jurin1/join_backend) (which is a Django backend).
 
 ## Prerequisites
 
