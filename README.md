@@ -46,7 +46,7 @@ The Join Frontend is a client-side application. You can run it by simply opening
 
 **Important:** For the frontend to work correctly with all features (like user authentication, data persistence, etc.), the **Join Backend must be running and accessible**.
 
-*   **Ensure the Join Backend is set up and running.**  Refer to the documentation of the [Join Backend](link-to-join_backend_repository-if-available) for instructions on how to install and run the backend.
+*   **Ensure the Join Backend is set up and running.**  Refer to the documentation of the (https://github.com/jurin1/join_backend) for instructions on how to install and run the backend.
 *   **Verify Backend URL:** The frontend is currently configured to communicate with a backend API at `http://127.0.0.1:8000/api/` (see `scripts/storage.js`). If your backend is running on a different URL or port, you will need to update this within the `scripts/storage.js` file.
 
 ## Documentation
@@ -62,21 +62,6 @@ This project includes JSDoc documentation for the JavaScript files. To generate 
 2.  **View Documentation:** After running the script, the documentation will be generated in the `docs/` directory. Open `docs/index.html` in your browser to view the documentation.
 
 ## Directory Structure
-jurin1-join_frontend/
-├── assets/ # Images, SVGs, and HTML templates
-├── css/ # Stylesheets
-├── docs/ # JSDoc documentation (generated)
-├── fonts/ # Font files
-├── mediaquerys/ # Media queries for responsive design
-├── scripts/ # JavaScript files
-├── digest.txt
-├── fonts.css
-├── index.html # Main HTML file (Login Page)
-├── index.tar
-├── jsdoc.conf.json # JSDoc configuration file
-├── package.json # Project dependencies and scripts
-└── robots.txt
-
 
 *   **`assets/`**: Contains static assets like images, SVG icons, and HTML templates for different sections of the application.
 *   **`css/`**: Holds all the CSS stylesheets for styling the application.
