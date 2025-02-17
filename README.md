@@ -15,7 +15,7 @@ Before you begin, ensure you have the following installed:
 1.  **Clone the repository:**
 
     ```bash
-    git clone [<repository-url-for-jurin1-join_frontend>](https://github.com/jurin1/join_frontend.git)
+    git clone https://github.com/jurin1/join_frontend.git
     cd join_frontend
     ```
 
